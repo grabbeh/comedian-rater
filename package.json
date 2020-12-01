@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/grabbeh/comedian-rater#readme",
   "dependencies": {
+    "@nivo/core": "^0.66.0",
+    "@nivo/scatterplot": "^0.66.0",
     "autoprefixer": "^10.0.4",
     "dot-env": "0.0.1",
     "dotenv": "^8.2.0",

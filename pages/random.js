@@ -2,7 +2,6 @@ import { basicFetcher as fetcher } from '../utils/fetcher'
 import Container from '../components/container'
 import Header from '../components/header'
 import Form from '../components/form'
-import ReactSlider from 'react-slider'
 
 const Random = props => {
   return (
