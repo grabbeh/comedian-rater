@@ -37,4 +37,39 @@ const addVote = async (comedian, likeability, funniness) => {
   }
 }
 
-export { addVote }
+const getComedian = async comedian => {
+  let params = {
+    table: 'COMEDIAN-RATER-AGGREGATOR',
+    Key: {
+      PK: comedian
+    }
+  }
+
+  try {
+    await docClient.get(params).promise()
+    return { statusCode: 200 }
+  } catch (error) {
+    return {
+      statusCode: 400,
+      error: `Could not fetch: ${error.stack}`
+    }
+  }
+}
+
+const getComedians = async () => {
+  let params = {
+    TableName: 'COMEDIAN-RATER-AGGREGATOR'
+  }
+
+  try {
+    let data = await docClient.query(params).promise()
+    return { statusCode: 200, body: JSON.stringify(data) }
+  } catch (e) {
+    return {
+      statusCode: 400,
+      error: `Could not fetch: ${error.stack}`
+    }
+  }
+}
+
+export { addVote, getComedian, getComedians }

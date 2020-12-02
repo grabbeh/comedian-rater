@@ -1,5 +1,6 @@
-import results from '../../data/ratings.json'
+import { getComedians } from '../../api/dynamo'
 
 export default async (req, res) => {
-  res.json({ results })
+  let comedians = await getComedians()
+  res.json({ comedians })
 }

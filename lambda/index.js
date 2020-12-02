@@ -10,7 +10,6 @@ exports.handler = async (event, context, callback) => {
       AWS.DynamoDB.Converter.unmarshall(record.dynamodb.NewImage)
     )
     for (let record of unmarshalledRecords) {
-      console.log(record)
       let params = {
         TableName: 'COMEDIAN-RATER-AGGREGATOR',
         Key: {
