@@ -4,6 +4,7 @@ module.exports = {
   theme: {
     fontFamily: {
       sans: ['Segoe UI', 'system-ui'],
+      nerko: ['NerkoOne'],
       serif: ['ui-serif', 'Georgia']
     },
     extend: {}
