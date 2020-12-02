@@ -57,12 +57,13 @@ const getComedian = async comedian => {
 }
 
 const getComedians = async () => {
+  console.log('Called')
   let params = {
     TableName: 'COMEDIAN-RATER-AGGREGATOR'
   }
 
   try {
-    let data = await docClient.query(params).promise()
+    let data = await docClient.scan(params).promise()
     return { statusCode: 200, body: JSON.stringify(data) }
   } catch (e) {
     return {

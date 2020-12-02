@@ -2,6 +2,7 @@ import { ResponsiveScatterPlot } from '@nivo/scatterplot'
 import Header from '../components/header'
 import { ThemeProvider } from '@nivo/core'
 import Container from '../components/container'
+import { basicFetcher as fetcher } from '../utils/fetcher'
 
 const data = [
   {
@@ -64,14 +65,17 @@ const Results = props => {
           />
         </ThemeProvider>
       </div>
+      <div className='p-4 bg-gray-200'>
+        <pre>{JSON.stringify(props.data.comedians, undefined, 2)}</pre>
+      </div>
     </Container>
   )
 }
-/*
+
 export async function getServerSideProps () {
   const data = await fetcher('/get-results')
   return { props: { data } }
-}*/
+}
 
 export default Results
 
