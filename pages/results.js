@@ -4,67 +4,39 @@ import { ThemeProvider } from '@nivo/core'
 import Container from '../components/container'
 import { basicFetcher as fetcher } from '../utils/fetcher'
 
-const data = [
-  {
-    id: 'Jimmy Tarbuck',
-    data: [
-      {
-        x: 8,
-        y: 7
-      }
-    ]
-  },
-  {
-    id: 'Les Dennis',
-    data: [
-      {
-        x: 9,
-        y: 1
-      }
-    ]
-  },
-  {
-    id: 'Benny Hill',
-    data: [
-      {
-        x: 4,
-        y: 5
-      }
-    ]
-  }
-]
 const Results = props => {
-  console.log(props)
   return (
     <Container>
       <Header>Results</Header>
-      <div style={{ height: '500px' }}>
-        <ThemeProvider theme={theme}>
-          <ResponsiveScatterPlot
-            data={data}
-            colors='#357edd'
-            margin={{ top: 20, right: 10, bottom: 30, left: 30 }}
-            blendMode='multiply'
-            yScale={{
-              type: 'linear'
-            }}
-            xScale={{
-              type: 'linear'
-            }}
-            axisBottom={{
-              tickValues: 5,
-              format: c => `${c}`,
-              legend: 'Likeability'
-            }}
-            axisLeft={{
-              format: c => `${c}`,
-              legend: 'Funniness'
-            }}
-            yFormat={c => `Funniness ${c}`}
-            xFormat={c => `Likeability ${c}`}
-          />
-        </ThemeProvider>
-      </div>
+      {props.data.comedians && (
+        <div style={{ height: '500px' }}>
+          <ThemeProvider theme={theme}>
+            <ResponsiveScatterPlot
+              data={props.data.comedians}
+              colors='#357edd'
+              margin={{ top: 20, right: 10, bottom: 30, left: 30 }}
+              blendMode='multiply'
+              yScale={{
+                type: 'linear'
+              }}
+              xScale={{
+                type: 'linear'
+              }}
+              axisBottom={{
+                tickValues: 5,
+                format: c => `${c}`,
+                legend: 'Likeability'
+              }}
+              axisLeft={{
+                format: c => `${c}`,
+                legend: 'Funniness'
+              }}
+              yFormat={c => `Funniness ${c}`}
+              xFormat={c => `Likeability ${c}`}
+            />
+          </ThemeProvider>
+        </div>
+      )}
       <div className='p-4 bg-gray-200'>
         <pre>{JSON.stringify(props.data.comedians, undefined, 2)}</pre>
       </div>
