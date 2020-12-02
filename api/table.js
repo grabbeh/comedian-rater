@@ -5,7 +5,7 @@ dotenv.config({ path: '../.env' })
 AWS.config.update({
   region: 'eu-west-1',
   accessKeyId: process.env.AWS_ID,
-  secretAccessKey: process.env.AWS_SECRET_KEY
+  secretAccessKey: process.env.AWS_KEY
 })
 
 // Create the DynamoDB service object
