@@ -1,11 +1,11 @@
 import dotenv from 'dotenv'
 import AWS from 'aws-sdk'
-dotenv.config({ path: '../../.env' })
+dotenv.config({ path: '../.env' })
 
 AWS.config.update({
   region: 'eu-west-1',
-  accessKeyId: '',
-  secretAccessKey: ''
+  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
 })
 
 // Create the DynamoDB service object
@@ -15,10 +15,6 @@ var params = {
   AttributeDefinitions: [
     {
       AttributeName: 'PK',
-      AttributeType: 'N'
-    },
-    {
-      AttributeName: 'SK',
       AttributeType: 'S'
     }
   ],
@@ -26,17 +22,13 @@ var params = {
     {
       AttributeName: 'PK',
       KeyType: 'HASH'
-    },
-    {
-      AttributeName: 'SK',
-      KeyType: 'RANGE'
     }
   ],
   ProvisionedThroughput: {
     ReadCapacityUnits: 1,
     WriteCapacityUnits: 1
   },
-  TableName: 'COMEDIAN-RATER'
+  TableName: 'COMEDIAN-RATER-AGGREGATOR'
 }
 
 // Call DynamoDB to create the table

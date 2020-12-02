@@ -2,7 +2,6 @@ import { Formik, Form } from 'formik'
 import { string, object } from 'yup'
 import useFetchData from '../hooks/useFetchData'
 import Button from './button'
-
 import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 
@@ -25,7 +24,8 @@ const VoteForm = props => {
           likeability: false
         })
         let { likeability, funniness } = values
-        doFetch({ likeability, funniness })
+        let { comedian } = props
+        doFetch({ likeability, funniness, comedian })
         resetForm()
       }}
     >

@@ -1,5 +1,6 @@
 import dotenv from 'dotenv'
 import AWS from 'aws-sdk'
+import KSUID from 'ksuid'
 dotenv.config({ path: '../.env' })
 AWS.config.update({
   region: 'eu-west-1',
@@ -12,14 +13,16 @@ var docClient = new AWS.DynamoDB.DocumentClient({ apiVersion: '2012-08-10' })
 
 // add vote
 
-const addVote = async (id, content) => {
+const addVote = async (comedian, likeability, funniness) => {
+  const ksuidFromAsync = await KSUID.random()
+  const id = ksuidFromAsync.string
   let params = {
     TableName: 'COMEDIAN-RATER',
     Item: {
-      PK: id,
-      SK: `VOTE${}`,
-      VOTE_CAST_AT: Date.now(),
-      ...content
+      PK: comedian,
+      SK: `VOTE#${id}`,
+      likeability,
+      funniness
     }
   }
 

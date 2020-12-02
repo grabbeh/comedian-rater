@@ -33,7 +33,6 @@ const data = [
   }
 ]
 const Results = props => {
-  console.log(props)
   return (
     <Container>
       <Header>Results</Header>

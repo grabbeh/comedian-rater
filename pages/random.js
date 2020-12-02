@@ -7,7 +7,7 @@ const Random = props => {
   return (
     <Container>
       <Header>{props.data.comedian}</Header>
-      <Form />
+      <Form comedian={props.data.comedian} />
     </Container>
   )
 }
