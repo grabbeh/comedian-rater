@@ -7,4 +7,4 @@ Store results for each vote in DynamoDB, have a DynamoDB stream emit each new re
 https://medium.com/signiant-engineering/real-time-aggregation-with-dynamodb-streams-f93547cfb244
 https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Streams.Lambda.Tutorial.html
 
-![alt text][/]
+![Streams and triggers][/StreamsAndTriggers.png]
